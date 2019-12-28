@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,42 +35,38 @@
         </ul>
       </div>
     </nav>
+    -->
 
+    {% extends 'base.html' %}
+    {% block container %}
     <!-- HERO -->
 
     <div class="jumbotron text-center mt-4">
-      <h1 class="display-4">Всякие туры</h1>
-      <p class="lead">Для тех, кого отвлекают дома</p>
-      <p class="mt-5 w-50 mx-auto">Лучшие направления,где никто не будет вам мешать сидеть на берегу и изучать программирование, дизайн, разработку игр и управление продуктами</p>
+      <h1 class="display-4">{{ title }}</h1>
+      <p class="lead">{{ subtitle }}</p>
+      <p class="mt-5 w-50 mx-auto">{{ description }}</p>
     </div>
 
     <!-- CARDS -->
 
     <div class="row mt-5">
-
+        
+        {% for tour in tours %}
         <div class="col-4">
-            <div class="card mb-3" >
-            <img src="https://place-hold.it/300x200" class="card-img-top img-fluid">
+          <div class="card mb-3" >
+            <img src="{{ tour[1].picture }}" class="card-img-top img-fluid">
             <div class="card-body">
-              <h5 class="card-title">Hotel title</h5>
-             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="" class="btn btn-sm btn-primary">Подробнее</a>
+              <h5 class="card-title">{{ tour[1].title }}</h5>
+              <p class="card-text">{{ tour[1].description|truncate(50) }}</p>
+              <a href="/tours/{{ tour[0] }}" class="btn btn-sm btn-primary">Подробнее</a>
             </div>
+          </div>
         </div>
-        </div>
+        {% endfor %}
 
-        <div class="col-4">
-            <div class="card mb-3" >
-            <img src="https://place-hold.it/300x200" class="card-img-top img-fluid">
-            <div class="card-body">
-              <h5 class="card-title">Hotel title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="" class="btn btn-sm btn-primary">Подробнее</a>
-            </div>
-        </div>
-        </div>
-
-        <div class="col-4">
+        <!--
+        
+        < div class="col-4">
             <div class="card mb-3" >
             <img src="https://place-hold.it/300x200" class="card-img-top img-fluid">
             <div class="card-body">
@@ -114,7 +111,14 @@
         </div>
     </div>
 
+    -->
+
+    {% endblock %}
+
+
+<!--
 </div>
 
 </body>
 </html>
+-->
